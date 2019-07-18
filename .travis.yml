@@ -25,4 +25,19 @@ after_success:
   - docker push willdk3000/complex-server
   - docker push willdk3000/complex-worker
 
-
+deploy:
+  provider: elasticbeanstalk
+  # Region specified in AWS Beantalk url
+  region: "us-east-2"
+  app: "docker-complex"
+  env: "DockerComplex-env"
+  # Bucket name = zip file of all github files 
+  # Automatically created by AWS Beanstalk : go to AWS S3 Console
+  bucket_name: "elasticbeanstalk-us-east-2-681874359244"
+  # Name of app
+  bucket_path: "docker-complex"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
