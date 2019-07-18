@@ -8,7 +8,7 @@ before_install:
 
 # Test dev code
 script:
-  - docker run -e CI=true USERNAME/react-test npm test
+  - docker run -e CI=true willdk3000/react-test npm test
 
 after_success:
   - docker build -t willdk3000/complex-client ./client
