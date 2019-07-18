@@ -12,6 +12,6 @@ FROM nginx
 # Expose instruction does nothing EXCEPT on elastic beanstalk
 # where it maps the port 80 for incoming traffic
 EXPOSE 3000
-COPY --from=builder ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html
 # No need to specify a RUN command because the default starts Nginx
